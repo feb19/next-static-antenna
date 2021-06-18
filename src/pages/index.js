@@ -1,28 +1,40 @@
-import { fetchRSS } from "../libs/fetch"
+import data from "../../public/output.json"
 
-function Index({ res, build_time }) {
+function Antenna({rss}) {
   return <>
-      <div>Build at:（{build_time}）</div>
-      <div>{res[0].title}</div>
-      <div>{
-        res[0].data.items.map((data) => {
-          return <div key={data.link}>
-            <h3><a href={data.link}>{data.title}</a></h3>
-            </div>
-        })
-      }</div>
-    </>
+    <h3>{rss.title}</h3>
+    <ul>{
+      rss.data.items.slice(0,4).map((data) => {
+        return <div key={data.link}>
+          <li><a href={data.link} target="_blank">{data.title} - {Date(data.isoDate)}</a></li>
+        </div>
+      })
+    }</ul>
+  </>
+}
+
+function Index({ rss, buildTime }) {
   
+  return <>
+    <h1>Designers' Blogs</h1>
+    {rss.map((rssData) => {
+      console.log(rssData)
+      return <div>
+        <Antenna key={rssData.url} rss={rssData} />
+      </div>
+    })}
+    <div>fetch at:（{buildTime}）</div>
+  </>
 }
 
 export async function getStaticProps() {
-  const res = await fetchRSS()
-  const build_time = new Date().toString();
+  const buildTime = data.buildTime
+  const rss = data.rss
 
   return {
     props: {
-      res,
-      build_time
+      rss,
+      buildTime
     },
   }
 }

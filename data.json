@@ -3,5 +3,61 @@
     "url": "https://feb19.jp/rss.xml",
     "link": "https://feb19.jp/",
     "title": "feb19.jp"
+  },
+  {
+    "url": "https://design.dena.com/feed.xml",
+    "link": "https://dena.com/",
+    "title": "DeNA"
+  },
+  {
+    "url": "https://note.com/medpeer_design/rss",
+    "link": "https://medpeer.co.jp/",
+    "title": "MedPeer"
+  },
+  {
+    "url": "https://design.visional.inc/feed",
+    "link": "https://visional.inc/",
+    "title": "Visional"
+  },
+  {
+    "url": "https://eureka.design/rss.xml",
+    "link": "https://eure.jp/",
+    "title": "Eureka"
+  },
+  {
+    "url": "https://note.com/crowdworksdesign/rss",
+    "link": "https://crowdworks.co.jp/",
+    "title": "CrowdWorks"
+  },
+  {
+    "url": "https://blog.gmo.media/feed/",
+    "link": "https://www.gmo.media/",
+    "title": "GMO Media"
+  },
+  {
+    "url": "https://linecreative.jp/rss",
+    "link": "https://linecorp.com/ja/",
+    "title": "LINE"
+  },
+  {
+    "url": "https://note.com/mercari_design/rss",
+    "link": "https://about.mercari.com/",
+    "title": "mercari"
+  },
+  {
+    "url": "https://note.com/cybozu_design/rss",
+    "link": "https://cybozu.co.jp/",
+    "title": "Cybozu"
+  },
+  {
+    "url": "https://note.com/mfdesign/m/m7587cb2186f5/rss",
+    "link": "https://corp.moneyforward.com/",
+    "title": "Money Forwards"
+  },
+  {
+    "url": "https://note.com/mixi_design/m/m54ad94ca38f0/rss",
+    "link": "https://mixi.co.jp/",
+    "title": "Mixi"
   }
+  
 ]

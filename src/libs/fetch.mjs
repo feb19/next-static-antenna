@@ -1,34 +1,51 @@
 import Parser from "rss-parser";
 import fetch from "node-fetch";
 const parser = new Parser();
-const RSS_URL = `https://feb19.jp/rss.xml`;
+const DATA_JSON = `../../data.json`
 import fs from 'fs';
 
-export async function fetchRSS() {
-  const rss = []
-  const r = await fetch(RSS_URL)
+
+const getFeed = async (rssData) => {
+  const feed = await fetch(rssData.url)
     .then(response => response.text())
     .then(str => { 
       const data = parser.parseString(str)
       return data
     })
     .then(data => {
-      const items = data.items.sort((a, b) => {
+      data.items.sort((a, b) => {
         return new Date(b.isoDate) - new Date(a.isoDate)
       })
-      console.log(items)
-      rss.push({
-        url: RSS_URL,
+      return {
+        url: rssData.url,
         title: data.title,
         url: data.link,
         data: data
-      })
-      return rss
+      }
     })
+  return feed
+}
 
-  const build_time = new Date().toString();
-  console.log(rss)
-  fs.writeFileSync('./public/output.json', JSON.stringify(rss));
+const fetchRSSs = async (json) => {
+  const rss = []
+  for (let i = 0; i < json.length; i++) {
+    const feed = await getFeed(json[i])
+    rss.push(feed)
+  }
+  return rss
+}
+
+export async function fetchRSS() {
+  const content = fs.readFileSync('./data.json', 'utf8')
+  const json = JSON.parse(content)
+  const rss = await fetchRSSs(json)
+
+  const buildTime = new Date().toString()
+  const result = {
+    rss: rss,
+    buildTime: buildTime
+  }
+  fs.writeFileSync('./public/output.json', JSON.stringify(result))
   return rss
 }
 
