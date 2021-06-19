@@ -1,4 +1,4 @@
-import data from "../../public/output.json"
+import data from "../../output.json"
 
 function Antenna({rss}) {
   return <>

@@ -45,7 +45,7 @@ export async function fetchRSS() {
     rss: rss,
     buildTime: buildTime
   }
-  fs.writeFileSync('./public/output.json', JSON.stringify(result))
+  fs.writeFileSync('./output.json', JSON.stringify(result))
   return rss
 }
 
