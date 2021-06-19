@@ -7,7 +7,8 @@
   "scripts": {
     "fetch": "node src/libs/fetch.mjs --experimental-modules",
     "dev": "next",
-    "build": "next build && next export"
+    "build": "next build && next export",
+    "export": "npm run fetch && next build && next export"
   },
   "author": "",
   "license": "ISC",
