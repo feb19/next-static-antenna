@@ -1,4 +1,8 @@
 import data from "../../output.json"
+import dayjs from "dayjs"
+import 'dayjs/locale/ja'
+
+dayjs.locale('ja')
 
 function Antenna({rss}) {
   return <>
@@ -6,7 +10,7 @@ function Antenna({rss}) {
     <ul>{
       rss.data.items.slice(0,4).map((data) => {
         return <div key={data.link}>
-          <li><a href={data.link} target="_blank">{data.title} - {Date(data.isoDate)}</a></li>
+          <li><a href={data.link} target="_blank">{data.title} - {dayjs(Date(data.isoDate)).format('YYYY/MM/DD')}</a></li>
         </div>
       })
     }</ul>
@@ -14,7 +18,6 @@ function Antenna({rss}) {
 }
 
 function Index({ rss, buildTime }) {
-  
   return <>
     <h1>Designers' Blogs</h1>
     {rss.map((rssData) => {
@@ -23,7 +26,7 @@ function Index({ rss, buildTime }) {
         <Antenna key={rssData.url} rss={rssData} />
       </div>
     })}
-    <div>fetch at:（{buildTime}）</div>
+    <div>fetch at:（{dayjs(Date(buildTime)).format('YYYY/MM/DD HH:mm:ss')}）</div>
   </>
 }
 

@@ -14,7 +14,6 @@ export async function fetchRSS() {
       const items = data.items.sort((a, b) => {
         return new Date(b.isoDate) - new Date(a.isoDate)
       })
-      console.log(items)
       rss.push({
         url: RSS_URL,
         title: data.title,
@@ -23,6 +22,5 @@ export async function fetchRSS() {
       })
       return rss
     })
-  console.log(rss)
   return rss
 }
